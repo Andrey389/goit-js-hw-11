@@ -88,3 +88,29 @@
 .btn-submit:hover {
   background: #6C8CFF;
 }
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px 156px 24px 156px;
+  min-width: 360px;
+}
+img {
+  display: block;
+}
+.gallery-link:hover, .gallery-link:focus {
+  color: #4E75FF;
+}
+.gallery-item {
+  list-style-type: none;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  
+}
+
+.descrip-gallery {
+  display: flex;
+}
+.descrip-img {
+  margin: auto;
+}
