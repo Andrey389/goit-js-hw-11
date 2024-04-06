@@ -30,7 +30,6 @@ refs.formEl.addEventListener('submit', event => {
   getImages(query)
     .then(data => {
       gallery.innerHTML = '';
-      createLoad();
       if (data.hits.length === 0) {
         iziToast.error({
           title: 'Error',
@@ -45,6 +44,7 @@ refs.formEl.addEventListener('submit', event => {
       }
     })
     .catch(error => {
+      createLoad();
       iziToast.error({
         title: 'Error',
         message:
