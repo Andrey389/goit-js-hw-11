@@ -40,10 +40,10 @@ refs.formEl.addEventListener('submit', event => {
       } else {
         deleteLoad();
         const markup = getGallery(data.hits);
+        setTimeout(createLoad, 2000);
       }
     })
     .catch(error => {
-      createLoad();
       iziToast.error({
         title: 'Error',
         message:
@@ -54,9 +54,9 @@ refs.formEl.addEventListener('submit', event => {
     });
 });
 
-function createLoad() {
+function deleteLoad() {
   loaderEl.classList.remove('visually-hidden');
 }
-function deleteLoad() {
+function createLoad() {
   loaderEl.classList.add('visually-hidden');
 }
