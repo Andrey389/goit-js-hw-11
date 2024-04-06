@@ -60,3 +60,4 @@ function createLoad() {
 function deleteLoad() {
   loaderEl.classList.add('visually-hidden');
 }
+console.log(deleteLoad);
