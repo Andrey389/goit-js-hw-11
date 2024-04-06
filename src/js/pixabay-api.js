@@ -1,12 +1,3 @@
-import iziToast from 'izitoast';
-
-import 'izitoast/dist/css/iziToast.min.css';
-
-const refs = {
-  formEl: document.querySelector('.form-search'),
-  inputEl: document.querySelector('.input-tex'),
-};
-
 export function getImages(query) {
   const BASE_URL = 'https://pixabay.com/api/';
   const params = new URLSearchParams({
@@ -20,17 +11,3 @@ export function getImages(query) {
 
   return fetch(url).then(res => res.json());
 }
-
-refs.formEl.addEventListener('submit', event => {
-  event.preventDefault();
-  const query = event.target.elements.inptext.value;
-
-  if (query === '') {
-    iziToast.error({
-      title: 'Error',
-      message:
-        '❌ Sorry, there are no images matching your search query. Please try again!',
-    });
-  }
-  getImages(query);
-});

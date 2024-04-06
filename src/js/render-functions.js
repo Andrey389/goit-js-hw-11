@@ -1,10 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const gallery = document.querySelector('.gallery');
-gallery.innerHTML = createImages(q);
-
-function getGallery(q) {
+export function getGallery(q) {
   return q
     .map(
       ({
