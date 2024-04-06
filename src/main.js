@@ -20,15 +20,13 @@ refs.formEl.addEventListener('submit', event => {
   getImages(query).then(data => {
     gallery.innerHTML = '';
     const markup = getGallery(data.hits);
-    if (query === '' || !markup) {
+    if (!markup) {
       iziToast.error({
         title: 'Error',
         message:
           '❌ Sorry, there are no images matching your search query. Please try again!',
         position: 'topRight',
       });
-    } else {
-      return;
     }
     // console.log(query || !markup);
   });
