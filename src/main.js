@@ -40,7 +40,6 @@ refs.formEl.addEventListener('submit', event => {
       } else {
         deleteLoad();
         const markup = getGallery(data.hits);
-        gallery.insertAdjacentHTML('beforeend', markup);
       }
     })
     .catch(error => {
