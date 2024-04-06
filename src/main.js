@@ -18,10 +18,19 @@ refs.formEl.addEventListener('submit', event => {
   event.preventDefault();
   const query = event.target.elements.input.value.trim();
 
+  if (!query) {
+    iziToast.error({
+      title: 'Error',
+      message: '❌ Please enter a search query!',
+      position: 'topRight',
+    });
+    return;
+  }
+
   getImages(query)
     .then(data => {
       gallery.innerHTML = '';
-      createLoad(data.hits);
+      createLoad();
       if (data.hits.length === 0) {
         iziToast.error({
           title: 'Error',
@@ -30,8 +39,9 @@ refs.formEl.addEventListener('submit', event => {
           position: 'topRight',
         });
       } else {
-        deleteLoad(data.hits);
+        deleteLoad();
         const markup = getGallery(data.hits);
+        gallery.insertAdjacentHTML('beforeend', markup);
       }
     })
     .catch(error => {
