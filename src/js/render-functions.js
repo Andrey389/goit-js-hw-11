@@ -1,8 +1,14 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-export function getGallery(q) {
-  return q
+const gallery = document.querySelector('.gallery');
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'tags',
+  captionsDelay: 250,
+});
+
+export function getGallery(data) {
+  const markup = data
     .map(
       ({
         webformatURL,
@@ -13,8 +19,7 @@ export function getGallery(q) {
         comments,
         downloads,
       }) =>
-        `<ul class="gallery">
-        <li class="gallery-item">
+        `<li class="gallery-item">
           <a class="gallery-link" href="${largeImageURL}">
             <img 
               class="gallery-image" 
@@ -41,12 +46,9 @@ export function getGallery(q) {
             </ul>
           </div>
         </li>
-      </ul>
       `
     )
     .join('');
+  gallery.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh();
 }
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'tags',
-  captionsDelay: 250,
-});

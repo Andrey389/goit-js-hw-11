@@ -8,12 +8,12 @@ import { getGallery } from './js/render-functions';
 
 const refs = {
   formEl: document.querySelector('.form-search'),
-  inputEl: document.querySelector('.input-tex'),
+  inputEl: document.querySelector('.input-text'),
 };
 
 refs.formEl.addEventListener('submit', event => {
   event.preventDefault();
-  const query = event.target.elements.inptext.value;
+  const query = event.target.elements.input.value;
 
   if (query === '') {
     iziToast.error({
@@ -23,7 +23,7 @@ refs.formEl.addEventListener('submit', event => {
     });
   }
   getImages(query).then(data => {
-    const markup = getGallery(data);
-    refs.inputEl.insertAdjacentElement('beforeend', markup);
+    const markup = getGallery(data.hits);
+    console.log(markup);
   });
 });

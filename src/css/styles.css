@@ -93,10 +93,11 @@
   display: flex;
   flex-wrap: wrap;
   padding: 24px 156px 24px 156px;
-  min-width: 360px;
 }
 img {
   display: block;
+  width: 360px;
+  height: 200px;
 }
 .gallery-link:hover, .gallery-link:focus {
   color: #4E75FF;
@@ -105,11 +106,13 @@ img {
   list-style-type: none;
   margin-right: 24px;
   margin-bottom: 24px;
+
   
 }
 
 .descrip-gallery {
   display: flex;
+  
 }
 .descrip-img {
   margin: auto;
