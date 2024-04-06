@@ -8,8 +8,7 @@ import { getGallery } from './js/render-functions';
 
 const gallery = document.querySelector('.gallery');
 const loaderEl = document.querySelector('.loader');
-loaderEl.addEventListener.add('.visually-hidden');
-loaderEl.classList.remove('.visually-hidden');
+
 const refs = {
   formEl: document.querySelector('.form-search'),
   inputEl: document.querySelector('.input-text'),
@@ -17,12 +16,12 @@ const refs = {
 
 refs.formEl.addEventListener('submit', event => {
   event.preventDefault();
-  const query = event.target.elements.input.value;
+  const query = event.target.elements.input.value.trim();
 
   getImages(query)
     .then(data => {
       gallery.innerHTML = '';
-      const markup = getGallery(data.hits);
+      createLoad(data.hits);
       if (data.hits.length === 0) {
         iziToast.error({
           title: 'Error',
@@ -31,6 +30,7 @@ refs.formEl.addEventListener('submit', event => {
           position: 'topRight',
         });
       } else {
+        deleteLoad(data.hits);
         const markup = getGallery(data.hits);
       }
     })
@@ -44,3 +44,10 @@ refs.formEl.addEventListener('submit', event => {
       console.error('Error fetching images:', error);
     });
 });
+
+function createLoad() {
+  loaderEl.classList.remove('visually-hidden');
+}
+function deleteLoad() {
+  loaderEl.classList.add('visually-hidden');
+}
